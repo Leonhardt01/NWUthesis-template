@@ -7,6 +7,10 @@
 \usepackage{booktabs}
 %避免图片的浮动超过Section部分
 \usepackage[section]{placeins}
+% 加载 enumitem 宏包以自定义 enumerate 环境
+\usepackage{enumitem} 
+% 用于并排显示子图
+\usepackage{subcaption} 
 
 \usepackage{natbib}
 
@@ -37,10 +41,14 @@
 
     \Large
     \begin{tabular}{rl}
-        \large 学生姓名： & \large 小明 \\%写成\underline{内容}添加下划线
-        \large 学生学号： & \large 2000123456 \\
+        %通过underline+makebox来设置下划线长度               
+        %若需要加空格显示，使用\hspace{length}          
+        %对于汉字使用\hskiplength更合理
+        % \large 学生姓名： & \large \underline{\makebox[8em][l]{小明\hskip1em小刚}} \\
+        \large 学生姓名： & \large 小明 \\
+        \large 学生学号： & \large 2000123456 \\                            
         \large 学科院系： & \large 数学科学学院 \\
-        \large 学科专业： & \large 计算数学 \\
+        \large 学科专业： & \large 统计数学 \\
         \large 指导教师： & \large 小明 \\
     \end{tabular}
     \vfill
@@ -174,6 +182,16 @@ tabular环境提供了最简单的表格功能。它用 $\backslash$hline 命令
         \hline
        \end{tabular}
 \end{equation*}
+有时候我们需要列出一些总结，可以使用itemize环境与$\backslash$item。而item后面可以跟一个方括号，
+中括号内的东西就替换掉默认的黑点，根据需求添加序号，比如下面这个例子
+\begin{itemize}
+  \item 第一条        
+  \item[(2)] 第二条      
+\end{itemize}
+或者使用下面的enumerate环境紧接方括号内label=$($ $\backslash$arabic*$)$配上自动标号
+\begin{enumerate}[label=(\arabic*)]
+  \item 自动标号       
+\end{enumerate}
 除此之外，可以使用 booktabs 宏包中的
 $\backslash$toprule、$\backslash$midrule和$\backslash$bottomrule命令。
 这些命令提供了更好的表格线样式，并且专门用于创建三横线表格。
@@ -188,6 +206,30 @@ $\backslash$toprule、$\backslash$midrule和$\backslash$bottomrule命令。
         \bottomrule
     \end{tabular}
 \end{equation*}
+当然我们还可以使用插入图片的方式来进行表格的进一步控制，比如在下方添加表的名字，
+可以使$\backslash$caption*\{\}的方式从而取消图片的标序，
+两个表之间可以手动使用$\backslash$vspace\{2cm\}指定间隔，具体可以查看源代码
+\vspace{2cm}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{ccccc}
+        \toprule
+        姓名 & 数学 & 语文 & 英语 & 总分 \\
+        \midrule
+        张三 & 85 & 90 & 75 & 250 \\
+        李四 & 95 & 85 & 80 & 260 \\
+        王五 & 80 & 85 & 85 & 250 \\
+        \bottomrule
+    \end{tabular}
+    % 使用*从而取消图片的标序
+    \caption*{成绩表}
+    \label{tab:grade}
+\end{table}
+
+% 或者使用下面的enumerate环境的方法自动标号
+% \begin{enumerate}[label=(\arabic*)]
+%   \item         
+% \end{enumerate}
 \subsection{浮动体}
 插图和表格通常需要占据大块空间，所以在文字处理软件中我们经常需要调整他们的位置。
 figure 和 table 环境可以自动完成这样的任务；
@@ -203,10 +245,28 @@ htbp 选项用来指定插图的理想位置，
 也就是就这里、页顶、页尾、浮动页（专门放浮动体的单独页面或分栏）。
 $\backslash$centering 用来使插图居中；
 $\backslash$caption 命令设置插图标题，
-LaTeX 会自动给浮动体的标题加上编号。注意 $\backslash$label 应该放在标题命令之后。
-但是实际上浮动图片的问题并非想象中的简单，这里碍于时间限制暂时写到这里
+LaTeX 会自动给浮动体的标题加上编号。注意$\backslash$label 应该放在标题命令之后。
+但是实际上浮动图片的问题并非想象中的简单，这里碍于时间限制暂时写到这里。
+补充一点，如果想让两个图片同行显示可以使用$\backslash$subfigure，效果如下
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{classroom.png}
+        % \caption{}
+        \label{fig:image1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{classroom.png}
+        % \caption{}
+        \label{fig:image2}
+    \end{subfigure}
+    \caption{有图有真相2}
+    \label{fig:twosubfigs004}
+\end{figure}
 \section{版面设置}
 \subsection{行间距}
+\noindent 可以使用$\backslash$noindent指定第一行不缩进。
 我们可以通过 setspace 宏包提供的命令来调整行间距。
 比如在导言区添加
 $\backslash$usepackage\{setspace\}

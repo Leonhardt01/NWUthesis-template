@@ -22,3 +22,7 @@ xelatex paper.tex
 ```bash
 latexmk -pdfxe -synctex=1 -interaction=nonstopmode main
 ```
+注意，如果在引用参考文献的情况下，如果出现以下错误
+- `"Package natbib: Bibliography not compatible with author-year citations."`
+
+则需要删除文件中的bbl文件，再重新编译
