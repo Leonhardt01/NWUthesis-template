@@ -1,63 +1,67 @@
-\documentclass[12pt, a4paper, oneside, UTF8]{ctexart}
+\documentclass{thesis}
+% \documentclass[12pt, a4paper, oneside, UTF8]{ctexart}
+
 \pagestyle{plain}	% 去除页眉
-\usepackage{amsmath, amssymb, graphicx}
-%生成pdf书签(中括号内代表给标签加编号)
-\usepackage[bookmarksnumbered=true]{hyperref}
-%三横线表格的宏包
-\usepackage{booktabs}
-%避免图片的浮动超过Section部分
-\usepackage[section]{placeins}
-% 加载 enumitem 宏包以自定义 enumerate 环境
-\usepackage{enumitem} 
-% 用于并排显示子图
-\usepackage{subcaption} 
-
-\usepackage{natbib}
-
-\bibliographystyle{unsrt} % 选择合适的引用格式
-% 预先指定图片的搜索路径
-\graphicspath{{figure/}}
+\input{setup.tex}
+\graphicspath{{figures/}}
 
 
-\title{初识\LaTeX}
-\author{匿名}
-\date{\today}
-
-%以上部分为导言区
 \begin{document}
 
 %封面
 \begin{titlepage}
+
     \centering
-    \vspace*{1cm}
-    \includegraphics[width=0.25\textwidth]{logo.png} % 插入校徽
+    % 左上角的学校徽标
+    \begin{minipage}[t]{0.4\textwidth}
+        \vspace{-2cm} 
+        \includegraphics[width=3cm]{nwu-badge.jpg}  % 替换为您的学校logo图片
+    \end{minipage}
+    \hfill
+    % 右上角的“完成（采用四级记分制）”
+    \begin{minipage}[t]{0.55\textwidth}
+        \raggedleft
+        {\small 成绩（采用四级记分制）} \\
+    \end{minipage}
+
+    \includegraphics[width=0.5\textwidth]{nwu-name.jpg} % 插入校名
     \vspace{1cm}
 
-    \includegraphics[width=0.5\textwidth]{name.png} % 插入校名
-    \vspace{1cm}
-
-    \huge\textbf{作业论文模板}
+    \one\textbf{本科毕业论文（设计）}
     \vspace{1.5cm}
 
     \Large
-    \begin{tabular}{rl}
-        %通过underline+makebox来设置下划线长度               
-        %若需要加空格显示，使用\hspace{length}          
-        %对于汉字使用\hskiplength更合理
-        % \large 学生姓名： & \large \underline{\makebox[8em][l]{小明\hskip1em小刚}} \\
-        \large 学生姓名： & \large 小明 \\
-        \large 学生学号： & \large 2000123456 \\                            
-        \large 学科院系： & \large 数学科学学院 \\
-        \large 学科专业： & \large 统计数学 \\
-        \large 指导教师： & \large 小明 \\
+    % 题目
+    {\three\textbf{题目：}\two\heiti\underline{在线学习平台的设计与实现}}  % 用空白区域表示题目
+
+    \vspace{2cm}
+
+    % 学生信息表格
+    \begin{tabular}{rc}
+        \smallthree 学生姓名 & \underline{\hspace{6cm}} \\
+        \smallthree 学号 & \underline{\hspace{6cm}} \\
+        \smallthree 指导教师 & \underline{\hspace{6cm}} \\
+        \smallthree 院系 & \underline{\hspace{6cm}} \\
+        \smallthree 专业 & \underline{\hspace{6cm}} \\
+        \smallthree 年级 & \underline{\hspace{6cm}} \\
     \end{tabular}
+    
     \vfill
 
-    \large{\today}
+    % 日期
+    \centering
+    {\large \heiti{二〇二五年六月}}
 \end{titlepage}
 
+\section*{诚信声明}
+本人郑重声明：本人所呈交的毕业论文（设计），是在导师的指导下独立进行研究所取得的成果。
+毕业论文（设计）中凡引用他人已经发表或未发表的成果、数据、观点等，均已明确注明出处。
+除文中已经注明引用的内容外，不包含任何其他个人或集体已经发表或在网上发表的论文。\cite{sample2023}
+
+特此声明。
+\newpage
 \section*{摘要} % 使用 * 来避免在目录中显示摘要
-\addcontentsline{toc}{section}{摘要} % 将摘要添加到目录中
+% \addcontentsline{toc}{section}{摘要} % 将摘要添加到目录中
 用粗糙但高效的启发式规则来豁免那些不太可能是完全加密的流量，然后它阻止其余未被豁免的流量。
 这些启发式规则基于常见协议的指纹、1比特的占比以及可打印的ASCII字符的数量、比例和位置。\\ \\
 \noindent \textbf{关键词:} 加密协议，流量分析
@@ -72,7 +76,7 @@
 
 \section{插入数学公式}
 此文章是用来练习$LaTeX$的一些基本使用方法。测试参考文献标注，请注意bib文件内的参考文献至少有一个被引用才可以，
-先XeLaTeX编译主文件，再使用BibTeX编译一次，然后再使用XeLaTeX编译两次，一共四次\citep{munns2002comparative}
+先XeLaTeX编译主文件，再使用BibTeX编译一次，然后再使用XeLaTeX编译两次，一共四次\cite{sample2023}
 \subsection{数学模式}
 在行文中使用\$ ... \$ 可以插入行内公式。如$E=mc^2$.\\
 在行文中使用$\backslash$begin\{equation \} ... $\backslash$end\{equation\} 可以插入行间公式。如：
@@ -284,5 +288,6 @@ $\backslash$textsf\{\}, $\backslash$texttt\{\}来表示字体。
 \newpage
 \addcontentsline{toc}{section}{参考文献}
 % .bib 文件名（不带扩展名
-\bibliography{user}
+\bibliography{bib/user}
+\bibliographystyle{plainnat} 
 \end{document}
