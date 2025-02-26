@@ -8,55 +8,14 @@
 
 \begin{document}
 
-%封面
-\begin{titlepage}
-
-    \centering
-    % 左上角的学校徽标
-    \begin{minipage}[t]{0.4\textwidth}
-        \vspace{-2cm} 
-        \includegraphics[width=3cm]{nwu-badge.jpg}  % 替换为您的学校logo图片
-    \end{minipage}
-    \hfill
-    % 右上角的“完成（采用四级记分制）”
-    \begin{minipage}[t]{0.55\textwidth}
-        \raggedleft
-        {\small 成绩（采用四级记分制）} \\
-    \end{minipage}
-
-    \includegraphics[width=0.5\textwidth]{nwu-name.jpg} % 插入校名
-    \vspace{1cm}
-
-    \one\textbf{本科毕业论文（设计）}
-    \vspace{1.5cm}
-
-    \Large
-    % 题目
-    {\three\textbf{题目：}\two\heiti\underline{在线学习平台的设计与实现}}  % 用空白区域表示题目
-
-    \vspace{2cm}
-
-    % 学生信息表格
-    \begin{tabular}{rc}
-        \smallthree 学生姓名 & \underline{\hspace{6cm}} \\
-        \smallthree 学号 & \underline{\hspace{6cm}} \\
-        \smallthree 指导教师 & \underline{\hspace{6cm}} \\
-        \smallthree 院系 & \underline{\hspace{6cm}} \\
-        \smallthree 专业 & \underline{\hspace{6cm}} \\
-        \smallthree 年级 & \underline{\hspace{6cm}} \\
-    \end{tabular}
-    
-    \vfill
-
-    % 日期
-    \centering
-    {\large \heiti{二〇二五年六月}}
-\end{titlepage}
-
+\input{cover.tex}
+%正文部分前设置罗马数字
+\pagenumbering{Roman}
 \section*{诚信声明}
+
 本人郑重声明：本人所呈交的毕业论文（设计），是在导师的指导下独立进行研究所取得的成果。
 毕业论文（设计）中凡引用他人已经发表或未发表的成果、数据、观点等，均已明确注明出处。
-除文中已经注明引用的内容外，不包含任何其他个人或集体已经发表或在网上发表的论文。\cite{sample2023}
+除文中已经注明引用的内容外，不包含任何其他个人或集体已经发表或在网上发表的论文。
 
 特此声明。
 \newpage
@@ -66,16 +25,17 @@
 这些启发式规则基于常见协议的指纹、1比特的占比以及可打印的ASCII字符的数量、比例和位置。\\ \\
 \noindent \textbf{关键词:} 加密协议，流量分析
 
-%正文部分前设置罗马数字
-\pagenumbering{Roman}
+
 \newpage
-\tableofcontents
+
+\tableofcontents  % 生成目录
+
 \newpage
 %正文部分重新设置为阿拉伯数字
-\pagenumbering{arabic}
+\pagenumbering{arabic}  
 
 \section{插入数学公式}
-此文章是用来练习$LaTeX$的一些基本使用方法。测试参考文献标注，请注意bib文件内的参考文献至少有一个被引用才可以，
+此文章是用来练习$LaTeX$的一些基本使用方法\cite{sunliguang2016jidi}。测试参考文献标注，请注意bib文件内的参考文献至少有一个被引用才可以，
 先XeLaTeX编译主文件，再使用BibTeX编译一次，然后再使用XeLaTeX编译两次，一共四次\cite{sample2023}
 \subsection{数学模式}
 在行文中使用\$ ... \$ 可以插入行内公式。如$E=mc^2$.\\
@@ -157,7 +117,8 @@ $ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $
 \end{equation*}
 \section{插入图片和表格}
 \subsection{插入图片}
-在 LaTeX 中插入图片，有很多种方式。最好用的应当属利用graphicx宏包提供的
+在 LaTeX 中插入图片，有很多种方式。
+最好用的应当属利用graphicx宏包提供的
 $\backslash$includegraphics命令。比如在 TeX 源文件同目录下，有名为 a.jpg 的图片，
 可以用这样的方式将它插入到输出文档中：
 当然也可以在导言部分使用$\backslash$graphicspath\{路径\}来制定图片的搜索路径.
@@ -288,6 +249,7 @@ $\backslash$textsf\{\}, $\backslash$texttt\{\}来表示字体。
 \newpage
 \addcontentsline{toc}{section}{参考文献}
 % .bib 文件名（不带扩展名
-\bibliography{bib/user}
-\bibliographystyle{plainnat} 
+\bibliography{bib/reference}
+\bibliographystyle{gbt7714-2005-numerical} 
+
 \end{document}

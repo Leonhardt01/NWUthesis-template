@@ -13,6 +13,8 @@
 \LoadClass[12pt, a4paper, oneside, UTF8]{ctexart}
 \RequirePackage{fontspec}    % 使用 fontspec 包
 \RequirePackage{graphicx}    % 使用 graphicx 包
+\RequirePackage{tocloft}     % 目录格式控制
+% 33\RequirePackage{ctex}        % 中文支持
 
 % % 设置中文字体
 % \newfontface\songti{SimSun}   % 宋体
@@ -40,3 +42,6 @@
 
 % 自定义间距
 \newcommand{\myvspace}{\vspace{1cm}} % 自定义垂直空白1cm
+
+% 设置参考文献字体大小
+\def\bibfont{\fontsize{10.5pt}{12.6pt}\selectfont} 
