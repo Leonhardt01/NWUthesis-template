@@ -14,23 +14,12 @@
 \RequirePackage{fontspec}    % 使用 fontspec 包
 \RequirePackage{graphicx}    % 使用 graphicx 包
 \RequirePackage{tocloft}     % 目录格式控制
-% 33\RequirePackage{ctex}        % 中文支持
+% \RequirePackage{ctex}        % 中文支持
 
 % % 设置中文字体
 % \newfontface\songti{SimSun}   % 宋体
 % \newfontface\kaishu{KaiTi}    % 楷体
 % \newfontface\heiti{SimHei}    % 黑体
-
-% 设置自定义字号（例如：小二，小四，五号）
-\newcommand{\one}{\fontsize{26pt}{31.2pt}\selectfont}
-\newcommand{\smallone}{\fontsize{24pt}{28.8pt}\selectfont}
-\newcommand{\two}{\fontsize{22pt}{26.4pt}\selectfont}
-\newcommand{\smalltwo}{\fontsize{18pt}{21.6pt}\selectfont}
-\newcommand{\three}{\fontsize{16pt}{19.2pt}\selectfont}
-\newcommand{\smallthree}{\fontsize{15pt}{18pt}\selectfont}
-\newcommand{\four}{\fontsize{14pt}{16.8pt}\selectfont}
-\newcommand{\smallfour}{\fontsize{12pt}{14.4pt}\selectfont}
-\newcommand{\five}{\fontsize{10.5pt}{12.6pt}\selectfont}
 
 
 % 设置行间距
@@ -41,7 +30,21 @@
 \newcommand{\mycontentfont}{\LARGE}
 
 % 自定义间距
-\newcommand{\myvspace}{\vspace{1cm}} % 自定义垂直空白1cm
+\newcommand{\myvspace}{\vspace{6pt}} % 自定义垂直空白6pound
 
-% 设置参考文献字体大小
-\def\bibfont{\fontsize{10.5pt}{12.6pt}\selectfont} 
+% 设置页码字号为五号
+\makeatletter
+\renewcommand{\@evenfoot}{
+  \hfil \zihao{5} \thepage \hfil
+}
+\renewcommand{\@oddfoot}{\@evenfoot}
+\makeatother
+
+
+\usepackage{etoolbox}        
+\AtBeginEnvironment{thebibliography}{
+  \zihao{5}
+  \kaishu                    % 楷体
+  \setlength{\itemsep}{0pt}  % 可选：调整条目间距
+}
+
