@@ -1,13 +1,23 @@
 \documentclass{thesis}
 
-% 去除页眉
-\pagestyle{plain}	
+
 \input{setup.tex}
+
+\fancypagestyle{plain}{ 
+  \fancyhf{} % 清空默认页眉页脚
+  \fancyfoot[C]{\zihao{-5} \thepage} % 页码居中，字号小五
+  \renewcommand{\headrulewidth}{0pt} % 隐藏页眉线（可选）
+  \renewcommand{\footrulewidth}{0pt} % 隐藏页脚线（可选）
+}
+% 去除页眉
+\pagestyle{plain}
+\fancyfoot[C]{\zihao{-5}\thepage}
+\renewcommand{\headrulewidth}{0pt}  % 隐藏页眉线
+\renewcommand{\footrulewidth}{0pt}  % 隐藏页脚线	
 \graphicspath{{figures/}}
 
 
 \begin{document}
-
 \input{cover.tex}
 
 %正文部分前设置罗马数字

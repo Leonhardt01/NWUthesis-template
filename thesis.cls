@@ -32,13 +32,13 @@
 % 自定义间距
 \newcommand{\myvspace}{\vspace{6pt}} % 自定义垂直空白6pound
 
-% 设置页码字号为五号
-\makeatletter
-\renewcommand{\@evenfoot}{
-  \hfil \zihao{5} \thepage \hfil
-}
-\renewcommand{\@oddfoot}{\@evenfoot}
-\makeatother
+% % 设置页码字号为小五
+% \makeatletter
+% \renewcommand{\@evenfoot}{
+%   \hfil \zihao{2} \thepage \hfil
+% }
+% \renewcommand{\@oddfoot}{\@evenfoot}
+% \makeatother
 
 
 \usepackage{etoolbox}        
