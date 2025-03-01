@@ -1,18 +1,20 @@
 \section{插入图片和表格}
 \subsection{插入图片}
-利用graphicx宏包提供的$\backslash$includegraphics命令。比如在 TeX 源文件同目录下，有名为 a.jpg 的图片，
-可以用这样的方式将它插入到输出文档中：
+利用graphicx宏包提供的$\backslash$ includegraphics命令。比如在 TeX 源文件同目录下，
+有名为 a.jpg 的图片，可以用这样的方式将它插入到输出文档中：
 当然也可以在导言部分使用$\backslash$graphicspath\{路径\}来制定图片的搜索路径.
 图片可能很大，超过了输出文件的纸张大小，或者干脆就是你自己觉得输出的效果不爽。
 这时候可以用 $\backslash$includegraphics 控制序列的可选参数来控制。
 比如$\backslash$includegraphics [ width = .8$\backslash$ textwidth ] \{a.jpg\}。
 这样图片的宽度会被缩放至页面宽度的百分之八十，图片的总高度会按比例缩放。
-其他的功能可以查看该包的文档\\
+其他的功能可以查看该包的文档。
+
 \subsection{插入表格}
 tabular环境提供了最简单的表格功能，用 $\backslash$hline 命令表示横线，
 在列格式中用 | 表示竖线；用 \& 来分列，
 用 $\backslash$$\backslash$ 来换行；
-每列可以采用居左、居中、居右等横向对齐方式，分别用 l、c、r 来表示。\\
+每列可以采用居左、居中、居右等横向对齐方式，分别用 l、c、r 来表示。
+
 \begin{equation*}
     \begin{tabular}{|l|c|r|}
         \hline

@@ -2,17 +2,30 @@
 \begin{titlepage}
     
     \centering
-    % 左上角的学校徽标
+    % 左上角校徽
     \begin{minipage}[t]{0.4\textwidth}
-        \vspace{-2cm} 
-        \includegraphics[width=3cm]{nwu-badge.jpg}  % 替换为您的学校logo图片
+        \vspace*{-2cm}
+        \includegraphics[width=3cm]{nwu-badge.jpg}
     \end{minipage}
     \hfill
-    % 右上角的“完成（采用四级记分制）”
-    \begin{minipage}[t]{0.55\textwidth}
-        \raggedleft
-        {\small 成绩（采用四级记分制）} \\
+    % 右侧双框（关键修改区域）
+    \begin{minipage}[t]{0.3\textwidth} % 缩小右侧容器宽度
+        \raggedright % 改为左对齐
+        \setlength{\fboxrule}{1pt}
+        \setlength{\fboxsep}{0pt}
+        
+        % 添加左侧间距
+        \hspace*{0.1\textwidth} % 控制整体左移量
+        \fbox{%
+        \begin{minipage}[c][2cm][c]{2cm}
+            \centering 成绩
+        \end{minipage}}%
+        \fbox{%
+        \begin{minipage}[c][2cm][c]{2cm}
+            \mbox{}
+        \end{minipage}}
     \end{minipage}
+
 
     \includegraphics[width=0.6\textwidth]{nwu-name.jpg} % 插入校名
     \vspace{1cm}
@@ -20,7 +33,7 @@
     \zihao{1}\textbf{本科毕业论文（设计）}
     \vspace{1.5cm}
 
-    \Large
+    % \Large
     % 题目
     {\zihao{3}\textbf{题目：}\zihao{2}\heiti\underline{在线学习平台的设计与实现}}  % 用空白区域表示题目
 
@@ -28,12 +41,12 @@
 
     % 学生信息表格
     \begin{tabular}{rc}
-        \zihao{-3} \textbf{学生姓名} & \underline{\hspace{6cm}} \\
-        \zihao{-3} \textbf{学号} & \underline{\hspace{6cm}} \\
-        \zihao{-3} \textbf{指导教师} & \underline{\hspace{6cm}} \\
-        \zihao{-3} \textbf{院系} & \underline{\hspace{6cm}} \\
-        \zihao{-3} \textbf{专业} & \underline{\hspace{6cm}} \\
-        \zihao{-3} \textbf{年级} & \underline{\hspace{6cm}} \\
+        \zihao{-3} \textbf{学生姓名}         & \zihao{-3}\underline{\makebox[4cm][c]{张三}} \\
+        \zihao{-3} \textbf{学\quad\quad 号} & \zihao{-3}\underline{\makebox[4cm][c]{20250001}} \\
+        \zihao{-3} \textbf{指导教师}         & \zihao{-3}\underline{\makebox[4cm][c]{李四教授}} \\
+        \zihao{-3} \textbf{院\quad\quad 系} & \zihao{-3}\underline{\makebox[4cm][c]{计算机学院}} \\
+        \zihao{-3} \textbf{专\quad\quad 业} & \zihao{-3}\underline{\makebox[4cm][c]{人工智能}} \\
+        \zihao{-3} \textbf{年\quad\quad 级} & \zihao{-3}\underline{\makebox[4cm][c]{2025级}} \\
     \end{tabular}
     
     \vfill
