@@ -30,7 +30,7 @@
     \includegraphics[width=0.6\textwidth]{nwu-name.jpg} % 插入校名
     \vspace{1cm}
 
-    \zihao{1}\textbf{本科毕业论文（设计）}
+    \zihao{1}{{\kaishu\bfseries 本科毕业论文（设计）}}
     \vspace{1.5cm}
 
     % \Large
@@ -40,20 +40,23 @@
     \vspace{2cm}
 
     % 学生信息表格
-    \begin{tabular}{rc}
-        \zihao{-3} \textbf{学生姓名}         & \zihao{-3}\underline{\makebox[4cm][c]{张三}} \\
-        \zihao{-3} \textbf{学\quad\quad 号} & \zihao{-3}\underline{\makebox[4cm][c]{20250001}} \\
-        \zihao{-3} \textbf{指导教师}         & \zihao{-3}\underline{\makebox[4cm][c]{李四教授}} \\
-        \zihao{-3} \textbf{院\quad\quad 系} & \zihao{-3}\underline{\makebox[4cm][c]{计算机学院}} \\
-        \zihao{-3} \textbf{专\quad\quad 业} & \zihao{-3}\underline{\makebox[4cm][c]{人工智能}} \\
-        \zihao{-3} \textbf{年\quad\quad 级} & \zihao{-3}\underline{\makebox[4cm][c]{2025级}} \\
-    \end{tabular}
-    
+    {
+        \zihao{-3}\bfseries
+        \renewcommand{\arraystretch}{1.3} % 全局调整行间距系数
+        \begin{tabular}{rc}
+            \textbf{学生姓名}         & \underline{\makebox[5cm][c]{张三}} \\
+            \textbf{学\quad\quad 号} & \underline{\makebox[5cm][c]{20250001}} \\
+            \textbf{指导教师}         & \underline{\makebox[5cm][c]{李四教授}} \\
+            \textbf{院\quad\quad 系} & \underline{\makebox[5cm][c]{信息科学与技术学院}} \\
+            \textbf{专\quad\quad 业} & \underline{\makebox[5cm][c]{软件工程}} \\
+            \textbf{年\quad\quad 级} & \underline{\makebox[5cm][c]{2025级}} \\
+        \end{tabular}
+    }
     \vfill
 
     % 日期
     \centering
-    {\zihao{3} \heiti{二〇二五年六月}}
+    {\zihao{3} {\kaishu\bfseries{二〇二五年六月}}}
 \end{titlepage}
 \newpage
 % 去除空白页的页眉和页脚
