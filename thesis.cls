@@ -41,6 +41,7 @@
 % \makeatother
 
 
+
 \usepackage{etoolbox}        
 \AtBeginEnvironment{thebibliography}{
   \zihao{5}
@@ -49,11 +50,9 @@
 }
 
 
-% AutoFakeBold 命令，局部打开伪粗体功能
-\let\kaishu\relax                               % 清除旧定义
-\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]   % 重定义 \kaishu
-
 \makeatletter
 % \renewcommand\@biblabel[1]{\quad\quad[#1]} % 参考文献标号右对齐
 \renewcommand\@biblabel[1]{[#1]\hfill}  % 参考文献标号左对齐
 \makeatother
+
+

@@ -21,6 +21,7 @@
 \usepackage{tocloft} 
 
 \usepackage{amsmath, amssymb, graphicx}
+\numberwithin{figure}{section}
 %生成pdf书签(中括号内代表给标签加编号)
 \usepackage[bookmarksnumbered=true]{hyperref}
 
@@ -40,7 +41,40 @@
 \usepackage{fancyhdr}
 % 设置行距
 \usepackage{setspace}
+% 制表环境
+\usepackage{array} 
+% 强制图标浮动位置
+\usepackage{float}
 
 \usepackage{listings}
 \lstset{breaklines=true, basicstyle=\ttfamily}
 
+% AutoFakeBold 命令，局部打开伪粗体功能
+\let\kaishu\relax                               % 清除旧定义
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]   % 重定义 \kaishu
+
+% 修改图的编号格式为「节号-序号」，例如：图1-1
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+
+
+\fancypagestyle{plain}{ 
+  \fancyhf{} % 清空默认页眉页脚
+  \fancyfoot[C]{\zihao{-5} \thepage} % 页码居中，字号小五
+  \renewcommand{\headrulewidth}{0pt} % 隐藏页眉线（可选）
+  \renewcommand{\footrulewidth}{0pt} % 隐藏页脚线（可选）
+}
+% 去除页眉
+\pagestyle{plain}
+\fancyfoot[C]{\zihao{-5}\thepage}
+\renewcommand{\headrulewidth}{0pt}  % 隐藏页眉线
+\renewcommand{\footrulewidth}{0pt}  % 隐藏页脚线	
+\graphicspath{{figures/}}
+
+\captionsetup{labelformat=default,labelsep=space} %去除caption的冒号
+
+
+%修改图、表汉字为黑体
+\usepackage{caption}
+\DeclareCaptionFont{heiti}{\heiti}
+\captionsetup{labelfont={heiti}, textfont={heiti}}
