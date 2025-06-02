@@ -64,18 +64,26 @@ $ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $
 他们都带有编号，如果不需要编号可以使用带星花的版本。
 \begin{gather}
     a = b+c+d \\
-    x = y+z
+    (\mathrm{e}^{ax}\sin bx)^{(n)}=(a^2+b^2)^{\frac{n}{2}}\mathrm{e}^{ax}\sin (bx+n\arctan\frac{a}{b})
 \end{gather}
 \begin{align*}
     a &= b+c+d \\
     x &= y+z
 \end{align*}
+但是，如果我们是要把一个公式拆分成多行来书写，并给出一个单独的编号，就需要使用split环境。split环境需要嵌套在equation环境中，并且使用\&来标识对齐位置。
+\begin{equation}
+    \begin{split}
+        a &= b+c+d \\
+          &= e+f+g
+    \end{split}
+\end{equation}
 \subsection{分段函数}
-分段函数可以用cases\textit{次环境}来实现，它必须包含在数学环境之内。
-\begin{equation*}
+分段函数可以用cases\textit{次环境}来实现，它必须包含在数学环境之内，如公式~\ref{eq:formula}所示。
+\begin{equation}
+    \label{eq:formula}
     y=
     \begin{cases}
-        -\sin{x},\quad x \leqslant 0 \\
-        x,\quad x>0
+        -\sin{x}    &,x \leqslant 0 \\
+        x           &,x>0
     \end{cases} 
-\end{equation*}
+\end{equation}

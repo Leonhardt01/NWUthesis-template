@@ -59,6 +59,8 @@ $\backslash$toprule、$\backslash$midrule和$\backslash$bottomrule命令。
 两个表之间可以手动使用$\backslash$vspace\{2cm\}指定间隔，具体可以查看源代码
 \vspace{2cm}
 \begin{table}[htbp]
+    \caption{公告表}
+    \label{tab:Announcement}
     \centering
     \begin{tabular}{ccccc}
         \toprule
@@ -70,7 +72,6 @@ $\backslash$toprule、$\backslash$midrule和$\backslash$bottomrule命令。
         \bottomrule
     \end{tabular}
     % 使用*从而取消图片的标序
-    \caption*{成绩表}
     \label{tab:grade}
 \end{table}
 
@@ -93,7 +94,7 @@ htbp 选项用来指定插图的理想位置，
 也就是就这里、页顶、页尾、浮动页（专门放浮动体的单独页面或分栏）。
 $\backslash$centering 用来使插图居中；
 $\backslash$caption 命令设置插图标题，
-LaTeX 会自动给浮动体的标题加上编号。注意$\backslash$label 应该放在标题命令之后。
+LaTeX会自动给浮动体的标题加上编号。注意$\backslash$label 应该放在标题命令之后。
 但是实际上浮动图片的问题并非想象中的简单，这里碍于时间限制暂时写到这里。
 补充一点，如果想让两个图片同行显示可以使用$\backslash$subfigure，效果如下
 \begin{figure}[htbp]

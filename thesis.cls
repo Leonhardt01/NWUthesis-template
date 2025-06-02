@@ -42,7 +42,7 @@
 
 
 
-\usepackage{etoolbox}        
+\RequirePackage{etoolbox}       
 \AtBeginEnvironment{thebibliography}{
   \zihao{5}
   \kaishu                    % 楷体

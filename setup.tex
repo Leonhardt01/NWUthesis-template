@@ -16,12 +16,15 @@
 % 自定义字体，控制英文字符为新罗马体
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
+% 设置 section 条目在目录中的前导符为点
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
 % 控制目录样式
 \usepackage{tocloft} 
 
-\usepackage{amsmath, amssymb, graphicx}
+\usepackage{amsmath, amssymb, graphicx, amsfonts}
 \numberwithin{figure}{section}
+\numberwithin{equation}{section}
 %生成pdf书签(中括号内代表给标签加编号)
 \usepackage[bookmarksnumbered=true]{hyperref}
 
@@ -41,9 +44,9 @@
 \usepackage{fancyhdr}
 % 设置行距
 \usepackage{setspace}
-% 制表环境
-\usepackage{array} 
-% 强制图标浮动位置
+
+\usepackage{array}
+
 \usepackage{float}
 
 \usepackage{listings}
@@ -53,9 +56,13 @@
 \let\kaishu\relax                               % 清除旧定义
 \newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]   % 重定义 \kaishu
 
+\let\songti\relax 
+\newCJKfontfamily\songti{SimSun}[AutoFakeBold,AutoFakeSlant]
+
 % 修改图的编号格式为「节号-序号」，例如：图1-1
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
 \renewcommand{\thetable}{\thesection-\arabic{table}}
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
 
 
 \fancypagestyle{plain}{ 
@@ -77,4 +84,8 @@
 %修改图、表汉字为黑体
 \usepackage{caption}
 \DeclareCaptionFont{heiti}{\heiti}
-\captionsetup{labelfont={heiti}, textfont={heiti}}
+\captionsetup{labelfont={heiti}, textfont={heiti}, font=small}
+
+
+\usepackage{unicode-math}
+\setmathfont{XITS Math} % 或者 XITS Math, Asana Math 等
