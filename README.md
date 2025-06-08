@@ -27,4 +27,4 @@ latexmk -pdfxe -synctex=1 -interaction=nonstopmode main
 
 则需要删除文件中的bbl文件，再重新编译
 
-参考文献样式为GB/T 7714-2005，在`texlive/(your version)/texmf-dist/bibtex/bst/gbt7714`中是有现成的
+参考文献样式为GB/T 7714-2015，在`texlive/(your version)/texmf-dist/bibtex/bst/gbt7714`中是有现成的

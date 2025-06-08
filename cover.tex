@@ -1,3 +1,14 @@
+% --- 填写你的个人信息 ---
+\PaperTitle{在线学习平台的设计与实现}
+\StudentName{张三}
+\StudentID{20250001}
+\Supervisor{李四教授}
+\Faculty{信息科学与技术学院}
+\Major{软件工程}
+\Grade{2022025级1级}
+% ---------------------------------
+
+
 %封面
 \begin{titlepage}
     
@@ -18,40 +29,23 @@
         \hspace*{0.1\textwidth} 
         \fbox{%这几个百分号不能删除
         \begin{minipage}[c][2cm][c]{2cm}
-            \centering {\zihao{3}\songti\textbf{成绩}}
+            \centering {\zihao{3}{\songti\textbf{成绩}}}
         \end{minipage}}%
         \fbox{%
         \begin{minipage}[c][2cm][c]{2cm}
-            \mbox{}
+            % \mbox{}
+            \centering {\zihao{3}{\songti\textbf{良好}}}
         \end{minipage}}
     \end{minipage}
 
-
+    \vspace{1cm}
     \includegraphics[width=0.6\textwidth]{nwu-name.jpg} % 插入校名
     \vspace{1cm}
 
     \zihao{1}{{\kaishu\bfseries 本科毕业论文（设计）}}
-    \vspace{1.5cm}
+    \vspace{1cm}
 
-    % \Large
-    % 题目
-    {\zihao{3}\textbf{题目：}\zihao{2}\heiti\underline{在线学习平台的设计与实现}}  % 用空白区域表示题目
-
-    \vspace{2cm}
-
-    % 学生信息表格
-    {
-        \zihao{-3}\bfseries
-        \renewcommand{\arraystretch}{1.3} % 全局调整行间距系数
-        \begin{tabular}{rc}
-            \textbf{学生姓名}         & \underline{\makebox[5cm][c]{张三}} \\
-            \textbf{学\quad\quad 号} & \underline{\makebox[5cm][c]{20250001}} \\
-            \textbf{指导教师}         & \underline{\makebox[5cm][c]{李四教授}} \\
-            \textbf{院\quad\quad 系} & \underline{\makebox[5cm][c]{信息科学与技术学院}} \\
-            \textbf{专\quad\quad 业} & \underline{\makebox[5cm][c]{软件工程}} \\
-            \textbf{年\quad\quad 级} & \underline{\makebox[5cm][c]{2025级}} \\
-        \end{tabular}
-    }
+    \MakeCoverInfo
     \vfill
 
     % 日期
