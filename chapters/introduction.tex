@@ -71,6 +71,7 @@ $ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $
     x &= y+z
 \end{align*}
 但是，如果我们是要把一个公式拆分成多行来书写，并给出一个单独的编号，就需要使用split环境。split环境需要嵌套在equation环境中，并且使用\&来标识对齐位置。
+若我们需要对齐的公式组中，只有其中一行需要编号，可以用split或者gather*嵌套在equation环境中。
 \begin{equation}
     \begin{split}
         a &= b+c+d \\
