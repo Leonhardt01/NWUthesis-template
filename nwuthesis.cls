@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{nwuthesis}[2025/06/08 Northwest University Thesis Class v1.0] 
+\ProvidesClass{nwuthesis}[2025/07/10 Northwest University Thesis Class v1.1]
 
 % 1. 加载基础类
 \LoadClass[zihao=-4, a4paper, oneside, UTF8]{ctexart} % 小四, A4纸, 单面, UTF8编码
@@ -9,10 +9,10 @@
 
 % 3. 字体设置
 \RequirePackage{fontspec}
-\setmainfont{Times New Roman} % 定西文字体
-% ctexart 会设置默认中文字体。以下是自定义特定字体文件或特性：
+\setmainfont{Times New Roman} % 如果学校要求特定西文字体，取消注释并设置
+% ctexart 会设置默认中文字体。以下是用户自定义特定字体文件或特性：
 \let\kaishu\relax % 清除旧定义
-\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]               % 楷体, 伪粗体 (确保系统有 KaiTi 字体)
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold]   % 楷体, 伪粗体 (确保系统有 KaiTi 字体)
 \let\songti\relax % 清除旧定义
 \newCJKfontfamily\songti{SimSun}[AutoFakeBold,AutoFakeSlant] % 宋体, 伪粗体, 伪斜体 (确保系统有 SimSun 字体)
 % 如果 \heiti 也需要特殊指定 (例如用于图表标题)，则类似定义:
@@ -25,8 +25,8 @@
 
 % 5. 目录格式控制
 \RequirePackage{tocloft}
-\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}           % section 条目在目录中的前导符为点
-\renewcommand{\cfttoctitlefont}{\centering\zihao{-2}\bfseries}  % 目录标题字体大小
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % section 条目在目录中的前导符为点
+\renewcommand{\cfttoctitlefont}{\centering\zihao{-2}\bfseries} % 目录标题字体大小
 
 
 % 6. 表格相关宏包
@@ -36,11 +36,11 @@
 \RequirePackage{array}          % 增强 tabular 和 array 环境
 \RequirePackage{tabularx}       % 用于 tabularx 环境和 X 列
 \RequirePackage{ragged2e}       % 用于 X 列中的 \RaggedRight, \Centering, \RaggedLeft (可选，改善对齐)
+\RequirePackage{multirow}       % 多行单元格
 
 
 % 7. 数学公式相关
 \RequirePackage{amsmath, amssymb}
-% \setmathfont{XITS Math} % 或者 XITS Math, Asana Math 等，这里不设置，使用默认
 
 % 8. 算法排版
 \RequirePackage[ruled,linesnumbered]{algorithm2e} % linesnumbered 显示行号
@@ -57,6 +57,17 @@
 
 % 12. 参考文献引用样式 (natbib)
 \RequirePackage[numbers,super,square]{natbib} % 数字引用, 上标, 方括号
+% 自定义citeinline命令，用于在正文中引用文献时，不显示上标
+\makeatletter
+\newcommand{\citeinline}[1]{{%
+    \begingroup
+    \renewcommand{\textsuperscript}[1]{##1}%
+    \cite{#1}%
+    \endgroup
+}}
+\makeatother
+
+
 
 % 13. 行距设置
 \RequirePackage{setspace}
@@ -98,6 +109,8 @@
 % 16. 全局排版调整和自定义命令
 % \xeCJKsetup{CJKecglue=} % 如果全局需要调整中西文间距，在此设置。
                          % ctexart 已有默认处理，请测试效果决定是否保留。
+
+
 
 % 图、表、公式编号格式 (与章节关联)
 \numberwithin{figure}{section}
@@ -164,20 +177,22 @@
     % 如果希望下划线长度随标题内容变化，可以直接 \underline{\@papertitle}
     % 如果希望标题在一个固定宽度的下划线区域内居中，可以使用 \underline{\makebox[<width>][c]{\@papertitle}}
     % 这里我假设标题内容本身被下划线，并且字体较大
+    \vspace{0.65cm}
+    \songti
     \parbox[t]{\textwidth}{\centering % 使用 parbox 并配合 \centering 使标题居中
         \zihao{3}\textbf{题目：}%
         \zihao{2}\heiti\underline{\hspace{0.5em}\@papertitle\hspace{0.5em}}% 在标题内容前后加一点空白
     }
 
-    \vspace{2cm}
+    \vspace{1.5cm}
 
     % 学生信息表格
     \centering % 使表格居中
     { % 加一个分组，使得 \zihao 和 \renewcommand 的作用范围局限在此处
         \zihao{-3}\bfseries % 小三号字，加粗
-        \renewcommand{\arraystretch}{1.3} % 调整行间距系数
+        \renewcommand{\arraystretch}{1.25} % 调整行间距系数
         \begin{tabular}{r@{\hspace{1em}}l} % 右对齐标签，然后是1em的间隔，然后是左对齐内容
-            \textbf{学生姓名}         & \underline{\makebox[5cm][c]{\@studentname}} \\
+            \textbf{学生姓名}         &\underline{\makebox[5cm][c]{\@studentname}} \\
             \textbf{学\quad\quad 号} & \underline{\makebox[5cm][c]{\@studentid}} \\
             \textbf{指导教师}         & \underline{\makebox[5cm][c]{\@supervisor}} \\
             \textbf{院\quad\quad 系} & \underline{\makebox[5cm][c]{\@faculty}} \\
@@ -214,6 +229,8 @@
   {\normalfont\zihao{-3}\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}
   {\normalfont\zihao{4}\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsubsection}
+  {\normalfont\zihao{4}\bfseries}{\thesubsubsubsection}{1em}{}
 
 
 % 20. PDF 书签和链接 (hyperref) - 建议较晚加载

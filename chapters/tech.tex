@@ -74,7 +74,41 @@ $\backslash$toprule、$\backslash$midrule和$\backslash$bottomrule命令。
     % 使用*从而取消图片的标序
     \label{tab:grade}
 \end{table}
+{
+    % \newcolumntype{M}[1]{>{\RaggedRight\arraybackslash}m{#1}}
+    % \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\begin{table}[htbp]
+  \centering
+  \caption{两个医疗影像数据集的实验设置与参数对比}
+  \label{tab:comparison}
+  % --- 修改部分 ---
+  % 将所有列都改为我们新定义的垂直居中类型
+  % C{2.5cm} 用于第一列，M{4.5cm} 和 M{5cm} 用于后两列
+  % \begin{tabular}{C{3.5cm} M{4.5cm} M{6cm} }
+  \begin{tabular}{ 
+    >{\centering\arraybackslash}m{3.5cm} |
+    >{\RaggedRight\arraybackslash}m{4.5cm} | 
+    >{\RaggedRight\arraybackslash}m{6cm} }
+    \toprule
+    % 表头不需要修改，因为 \multicolumn 会覆盖列定义
+    \multicolumn{1}{c}{\textbf{维度}} & \multicolumn{2}{c}{\textbf{CovidMNIST (COVID-19 胸部 X 光分类)}} \\
+    \midrule
+    % 表格内容现在会自动垂直居中
+    数据来源与任务 & 整合公开 COVID-19 X 光数据集, 三分 (COVID-19 / 细菌性肺炎 / 正常) & 基于 HAM10000 皮肤镜数据集, 七分类 (黑色素瘤 / 基底细胞癌等 7 类) \\
+    \addlinespace 
+    数据规模 & 训练集 7,000 / 验证集 1,000 / 测试集 2,000 (样本均衡度: 正常 28.6\%) & 训练集 7,010 / 验证集 1,005 / 测试集 2,000 (黑色素瘤占比 14.3\%) \\
+    \addlinespace
+    图像特征 & 模态: 灰度 X 光片 (28$\times$28/64$\times$64) 关键结构: 肺野、磨玻璃影 & 模态: RGB 皮肤镜图像 (28$\times$28/64$\times$64) -关键特征: 色素网络、血管模式 \\
+    \addlinespace
+    损失函数优化 & - 混合监督损失: 交叉熵 + KL 散度 ($\lambda$=0.5) \newline - 焦点损失: $\alpha$=0.7 (降低正常类权重) & 焦点损失: $\alpha$=0.8 (黑色素瘤权重), $\gamma$=2 (难样本放大) 聚类正则化: 强制同类样本特征距离 < 0.5 (欧氏距离约束) \\
+    \addlinespace
+    评价指标侧重 & 主指标: AUC-ROC (区分模糊类)、召回率 (避免漏诊) \newline 聚类指标: 轮廓系数 (验证三类分离度) & 主指标: 加权 F1 (平衡七分类)、AUC-PR (罕见病检测) \newline - 聚类指标: ARI (与病理诊断标签一致性) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
+
+}
 % 或者使用下面的enumerate环境的方法自动标号
 % \begin{enumerate}[label=(\arabic*)]
 %   \item         

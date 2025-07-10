@@ -17,14 +17,18 @@ xelatex main.tex
 xelatex main.tex
 ```
 
-或者也可以使用如下命令，其中-interaction=nonstopmode代表出现错误时候不停止编译，知道最后才显示错误位置，同样也是可以根据自己需求选择
+或者也可以使用如下命令，其中-interaction=nonstopmode代表出现错误时候不停止编译，直到最后才显示错误位置，根据自己需求选择
 
 ```bash
 latexmk -pdfxe -synctex=1 -interaction=nonstopmode main
 ```
+行间参考文献使用 **\citeline** 自定义命令，即文献[1]这种效果， **\cite** 为右上角引用
+
 注意，如果在引用参考文献的情况下，如果出现以下错误
 - `"Package natbib: Bibliography not compatible with author-year citations."`
 
 则需要删除文件中的bbl文件，再重新编译
 
 参考文献样式为GB/T 7714-2015，在`texlive/(your version)/texmf-dist/bibtex/bst/gbt7714`中是有现成的
+
+若不需要参考文献，则可以删除或注释掉main.tex中的bibliography.tex即可

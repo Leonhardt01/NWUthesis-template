@@ -1,5 +1,5 @@
 \section{插入数学公式}
-此文章是用来练习$LaTeX$的一些基本使用方法\cite{hasegawa2000plant,sunliguang2016jidi,tester2003na,zhu2002salt,mittler2002oxidative,shi2002regulation,verslues2005new,flowers1995breeding,varshney2005genomics,rengasamy2006world}。测试参考文献标注，请注意bib文件内的参考文献至少有一个被引用才可以，
+此文章是用来练习\LaTeX{}的一些基本使用方法\cite{hasegawa2000plant,sunliguang2016jidi,tester2003na,zhu2002salt,mittler2002oxidative,shi2002regulation,verslues2005new,flowers1995breeding,varshney2005genomics,rengasamy2006world}。测试参考文献标注，请注意bib文件内的参考文献至少有一个被引用才可以，
 先XeLaTeX编译主文件，再使用BibTeX编译一次，然后再使用XeLaTeX编译两次，一共四次\cite{sunliguang2016jidi}
 \subsection{数学模式}
 在行文中使用\$ ... \$ 可以插入行内公式。如$E=mc^2$.\\
@@ -10,9 +10,9 @@ E=mc^2.
 或者也可以写成equation*，这样就不会有编号。或者也可以使用$\backslash$[ 数学公式 $\backslash$]，
 这样也可以表示行间公式。\\在数学模式当中，上标为\^下标为\_并且只作用于之后的一个字符，如需要多个字符，请使用花括号括起来。
 对于分式，如果要强制行内模式的分式显示为行间模式的大小，可以使用 $\backslash$dfrac, 
-比如：$ \dfrac{1}{2} $
+比如：$ \dfrac{1}{2} $，当然也可以直接起手一个$\backslash$displaystyle。
 反之可以使用 $\backslash$tfrac
-比如：$ \tfrac{1}{2} $，这个大小是与行间强制使用一样的
+比如：$ \tfrac{1}{2} $，这个大小是与行间强制使用一样的。
 \subsection{运算符}
 连加、连乘、极限、积分等大型运算符分别用$\backslash$sum, $\backslash$prod, $\backslash$lim, $\backslash$int
 他们的上下标在行内公式中被压缩，以适应行高。我们可以用 $\backslash$limits 和 $\backslash$nolimits
@@ -79,12 +79,14 @@ $ ( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} ) $
     \end{split}
 \end{equation}
 \subsection{分段函数}
-分段函数可以用cases\textit{次环境}来实现，它必须包含在数学环境之内，如公式~\ref{eq:formula}所示。
+分段函数可以用cases\textit{次环境}来实现，它必须包含在数学环境之内，若case内有分式
+，建议使用dfrac。这样不会显得公式很小。如公式~\ref{eq:formula}所示。
 \begin{equation}
     \label{eq:formula}
     y=
     \begin{cases}
-        -\sin{x}    &,x \leqslant 0 \\
-        x           &,x>0
+        -\sin{x}                &,x \leqslant 0 \\
+        0                       &,x=0 \\
+        \dfrac{\mathrm{e}}{2}    &,x>0
     \end{cases} 
 \end{equation}
